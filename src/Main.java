@@ -1,9 +1,13 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
 
         System.out.println(isPalindrone(122));
         System.out.println(isPerfectNumber(6));
+        System.out.println(numberToWords(123));
     }
 
     public static boolean isPalindrone(int number) {
@@ -32,6 +36,35 @@ public class Main {
         }
 
         return sumOfdiv == number;
+    }
+
+    public static String numberToWords(int number) {
+        if(number < 0) {
+            return "Invalid Value";
+        }
+
+        HashMap<Character, String> digitsText = new HashMap<>();
+        digitsText.put('0', "Zero");
+        digitsText.put('1', "One");
+        digitsText.put('2', "Two");
+        digitsText.put('3', "Three");
+        digitsText.put('4', "Four");
+        digitsText.put('5', "Five");
+        digitsText.put('6', "Six");
+        digitsText.put('7', "Seven");
+        digitsText.put('8', "Eight");
+        digitsText.put('9', "Nine");
+
+        String numberStr = String.valueOf(number);
+        StringBuilder result = new StringBuilder();
+
+        for(int i = 0; i < numberStr.length(); i++) {
+            char digitChar = numberStr.charAt(i);
+            String text = digitsText.get(digitChar);
+            result.append(text).append(" ");
+        }
+
+        return result.toString().trim();
     }
 
 
